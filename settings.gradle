@@ -6,6 +6,6 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "OminiPayAndroid"
+rootProject.name = "omini_pay_android"
 include ':app'
-include ':OminiPayAndroid'
+include ':ominipayment'
