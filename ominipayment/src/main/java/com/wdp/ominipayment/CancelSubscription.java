@@ -152,7 +152,8 @@ public class CancelSubscription extends AppCompatActivity {
                 setResult(RESULT_OK, intent);
                 finish();
             }
-            else if (responseCode == 401){
+            else if (responseCode == 401)
+            {
                 layoutProgress.setVisibility(View.GONE);
                 Intent intent = new Intent();
                 intent.putExtra("cancel_status", "Already cancelled");
