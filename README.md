@@ -33,6 +33,13 @@ Step 3-
         String username = "psp_test.sgkvcacb.c2drdmNhY2I2YTc3MA==";
         String password = "b3pFSnVJb3V3SW5QTnFneVRFSy9wQT09";
         String key = "a134f83650694bf419fb78b4288c2197";
+	
+	
+	
+	
+	
+	
+	
 
 
 *for Payment use :
@@ -57,17 +64,35 @@ Step 3-
 	 
 	 
 	 
-//get Response in OnActivityResult (requestcode == 500):
+	 
+	 
+	 
+	 
+	 
+//get Response in OnActivityResult
+
+if(data !=null && requestcode == 500)
+{
+
+}
+
 
 @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
-        if(requestCode == 500) {
+        if((data !=null && requestCode == 500) {
             String strValue = data.getStringExtra("payment_status");
             txtStatus.setText(strValue);
         }
     }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	 
 	 
@@ -102,11 +127,19 @@ Step 3-
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
-         if(requestCode == 600) {
+         if(data != null && requestCode == 600) {
             String strValue = data.getStringExtra("payment_status");
             txtStatus.setText(strValue);
         }
     }
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 *for Cancel Subscription - 
@@ -120,9 +153,36 @@ Step 3-
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
-         if(requestCode == 700) {
+         if(data != null && requestCode == 700) {
             String strValue = data.getStringExtra("cancel_status");
             txtStatus.setText(strValue);
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    *for Payment Checkout
+    
+     OminiPay.Checkout(this,username,password,key,
+                "customer_name",
+                "customer_email","Price","currency","remark");
+		
+		
+//get Response in OnActivityResult (requestcode == 800):
+
+ if(data != null && requestCode == 800) 
+ {
+            String strValue = data.getStringExtra("payment_status");
+            txtStatus.setText(strValue);
+        }
+
 	
