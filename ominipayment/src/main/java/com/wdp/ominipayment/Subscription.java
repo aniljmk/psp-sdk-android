@@ -154,7 +154,8 @@ public class Subscription extends AppCompatActivity {
                     "}\n" +
                     "}";
 
-            String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/subscription";
+            //String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/subscription";
+            String url = "https://test.digitalworld.com.sa/api/v1/test/payments/subscription";
             String encryptedData = encryptAES(key,json);
 
             try {

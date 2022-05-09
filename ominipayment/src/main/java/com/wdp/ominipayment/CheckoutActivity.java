@@ -30,7 +30,8 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-        String url = "https://psp.digitalworld.com.sa/checkouts/pay?";
+       // String url = "https://psp.digitalworld.com.sa/checkouts/pay?";
+        String url = "https://test.digitalworld.com.sa/checkouts/pay?";
 
         webView = (WebView) findViewById(R.id.webView);
 
