@@ -1,4 +1,4 @@
-# wdpominipayandroid
+# ominipayandroid
 omini payment gateway 
 
 Step 1 -
