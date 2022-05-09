@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OminiPayAndroid/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/OminiPayAndroid/ominipayment/src/main/res/layout/activity_checkout.xml" value="0.209375" />
         <entry key="..\:/omini_pay_android/ominipayment/src/main/res/layout/activity_checkout.xml" value="0.209375" />
         <entry key="..\:/omini_pay_android/ominipayment/src/main/res/layout/activity_payment.xml" value="0.209375" />
       </map>
