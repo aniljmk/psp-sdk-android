@@ -164,7 +164,8 @@ public class Payment extends AppCompatActivity {
                     "}\n" +
                     "}";
 
-            String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/pay";
+           // String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/pay";
+            String url = "https://test.digitalworld.com.sa/api/v1/test/payments/pay";
 
 
             String encryptedData = encryptAES(key,json);

@@ -51,6 +51,7 @@ public class OminiPay {
         intent.putExtra("currency",currency);
         intent.putExtra("remark",remark);
         ((Activity)context).startActivityForResult(intent,800);
+<<<<<<< HEAD
     }
 
 
@@ -62,6 +63,8 @@ public class OminiPay {
         intent.putExtra("key",key);
         intent.putExtra("details",details);
         ((Activity)context).startActivityForResult(intent,700);
+=======
+>>>>>>> 72eea18d4a762759e4cd1c2e1762418079595750
     }
 
 }
