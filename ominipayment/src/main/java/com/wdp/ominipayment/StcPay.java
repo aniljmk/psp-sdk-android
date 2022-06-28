@@ -76,6 +76,7 @@ public class StcPay extends AppCompatActivity {
     }
     class ApiCall extends AsyncTask
     {
+
         String username;
         String password;
         String key;
@@ -90,14 +91,24 @@ public class StcPay extends AppCompatActivity {
             this.details = detail;
         }
 
+
         @Override
         protected Object doInBackground(Object[] objects) {
+
             String name = "";
             String email = "";
             String amount = "";
             String mobile_number = "";
             String merchant_note = "";
+            String id = "";
+            String number = "";
+            String month = "";
+            String year = "";
+            String cvv = "";
+            String cardType = "";
+            String description = "";
             char quotes ='"';
+
             JSONObject js;
             {
                 try {
@@ -113,6 +124,7 @@ public class StcPay extends AppCompatActivity {
                 }
             }
 
+
             String json = "{\n" +
                     "\"Customer\":{\n" +
                     "\"Name\":"+name+",\n"+
@@ -124,10 +136,15 @@ public class StcPay extends AppCompatActivity {
                     "\"MerchantNote\":"+merchant_note +
                     "}\n" +
                     "}";
+
+            // String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/pay";
             String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/stc-pay";
+
+
             String encryptedData = encryptAES(key,json);
 
             try {
+
                 URL urlObj = new URL(url);
                 HttpURLConnection httpCon = (HttpURLConnection) urlObj.openConnection();
 
@@ -141,6 +158,7 @@ public class StcPay extends AppCompatActivity {
                 httpCon.setDoOutput(true);
                 httpCon.setRequestMethod("PUT");
                 String parameters = "trandata=" + encryptedData;
+
                 OutputStreamWriter writer = new OutputStreamWriter(
                         httpCon.getOutputStream());
                 writer.write(parameters);
@@ -148,6 +166,7 @@ public class StcPay extends AppCompatActivity {
 
                 responseCode = httpCon.getResponseCode();
                 String s = httpCon.getResponseMessage();
+
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(httpCon.getInputStream()));
                 StringBuilder sb = new StringBuilder();
@@ -162,6 +181,7 @@ public class StcPay extends AppCompatActivity {
                     JSONObject apiResponseObject = jsonObject.getJSONObject("apiResponse");
                     payment_url = apiResponseObject.getString("verifyUrl");
 
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -169,6 +189,8 @@ public class StcPay extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
             return null;
         }
 
@@ -192,16 +214,22 @@ public class StcPay extends AppCompatActivity {
                     webView.loadUrl(payment_url);
                 }
 
+
+
                 webView.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+
+
                         if (url.contains("payment_status=APPROVED")) {
+
                             Intent intent = new Intent();
                             intent.putExtra("payment_status", "Payment Success");
                             setResult(RESULT_OK, intent);
                             finish();
                             //Toast.makeText(OminiPayAndroid.this, "Payment Success!", Toast.LENGTH_SHORT).show();
+
                             return true;
                         }
                         else if (url.contains("payment_status=FAILED"))
@@ -213,6 +241,7 @@ public class StcPay extends AppCompatActivity {
                             //Toast.makeText(OminiPayAndroid.this, "Error!", Toast.LENGTH_SHORT).show();
                             return true;
                         }
+
                         view.loadUrl(url);
                         return true;
                     }
@@ -226,6 +255,8 @@ public class StcPay extends AppCompatActivity {
                         //progressDialog.dismiss();
                     }
                 });
+
+
             }
         }
 
@@ -261,8 +292,7 @@ public class StcPay extends AppCompatActivity {
         return s;
     }
 
-    public String encodeHexString(byte[] byteArray)
-    {
+    public String encodeHexString(byte[] byteArray) {
         StringBuffer hexStringBuffer = new StringBuffer();
         for (int i = 0; i < byteArray.length; i++) {
             hexStringBuffer.append(byteToHex(byteArray[i]));
@@ -270,8 +300,7 @@ public class StcPay extends AppCompatActivity {
         return hexStringBuffer.toString();
     }
 
-    public String byteToHex(byte num)
-    {
+    public String byteToHex(byte num) {
         char[] hexDigits = new char[2];
         hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);
         hexDigits[1] = Character.forDigit((num & 0xF), 16);
