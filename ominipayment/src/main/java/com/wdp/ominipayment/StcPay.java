@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,7 +29,6 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class StcPay extends AppCompatActivity {
-
     WebView webView;
     RelativeLayout layoutProgress;
     byte[] encryptedText = null;
@@ -116,7 +116,7 @@ public class StcPay extends AppCompatActivity {
             String json = "{\n" +
                     "\"Customer\":{\n" +
                     "\"Name\":"+name+",\n"+
-                    "\"Email\":"+email +",\n"+
+                    "\"Email\":"+email +
                     "},\n" +
                     "\"DirectPaymentAuthorizeV4RequestMessage\":{\n" +
                     "\"MobileNo\":"+mobile_number+",\n"+
@@ -124,7 +124,6 @@ public class StcPay extends AppCompatActivity {
                     "\"MerchantNote\":"+merchant_note +
                     "}\n" +
                     "}";
-
             String url = "https://psp.digitalworld.com.sa/api/v1/test/payments/stc-pay";
             String encryptedData = encryptAES(key,json);
 
@@ -142,7 +141,6 @@ public class StcPay extends AppCompatActivity {
                 httpCon.setDoOutput(true);
                 httpCon.setRequestMethod("PUT");
                 String parameters = "trandata=" + encryptedData;
-
                 OutputStreamWriter writer = new OutputStreamWriter(
                         httpCon.getOutputStream());
                 writer.write(parameters);
